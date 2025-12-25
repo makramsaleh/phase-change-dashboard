@@ -1,0 +1,358 @@
+{
+  "meta": {
+    "bookTitle": "Phase Change: The Alchemy of Emergence",
+    "lastUpdated": "2025-12-25T22:00:00Z",
+    "editorName": "ST"
+  },
+  "chapters": [
+    {
+      "id": "preface",
+      "number": null,
+      "part": "Preface",
+      "title": "The Feeling of a Living System",
+      "file": "preface-the-feeling-of-a-living-system.md",
+      "lastEdited": "2025-12-10",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-01" },
+        "writing": { "done": true, "date": "2025-11-15" },
+        "automatedQA": { "done": true, "date": "2025-12-05", "usedLoop": false },
+        "automatedFixes": { "done": true, "date": "2025-12-05" },
+        "manualQA": { "done": true, "date": "2025-12-08" },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": [
+            { "round": 1, "reviewDate": "2025-12-10", "fixesDate": "2025-12-10", "outcome": "approved_with_comments" }
+          ]
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch1",
+      "number": 1,
+      "part": "Part 1 - The Philosophy",
+      "title": "The Illusion of Control",
+      "file": "chapter-01-the-illusion-of-control.md",
+      "lastEdited": "2025-12-25",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-10-15" },
+        "writing": { "done": true, "date": "2025-11-20" },
+        "automatedQA": { "done": true, "date": "2025-12-25", "usedLoop": false },
+        "automatedFixes": { "done": true, "date": "2025-12-25" },
+        "manualQA": { "done": true, "date": "2025-12-13" },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": true, "lastRun": "2025-12-25" },
+      "noteToEditor": "Ready for first pass. Focus on the watchmaker analogy in sections 2-3."
+    },
+    {
+      "id": "ch2",
+      "number": 2,
+      "part": "Part 1 - The Philosophy",
+      "title": "The Discipline of Underdesign",
+      "file": "chapter-02-the-discipline-of-underdesign.md",
+      "lastEdited": "2025-12-14",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-10-20" },
+        "writing": { "done": true, "date": "2025-11-25" },
+        "automatedQA": { "done": true, "date": "2025-12-13", "usedLoop": false },
+        "automatedFixes": { "done": true, "date": "2025-12-14" },
+        "manualQA": { "done": true, "date": "2025-12-14" },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": 92,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": "Ready for first pass."
+    },
+    {
+      "id": "ch3",
+      "number": 3,
+      "part": "Part 2 - The Mechanics",
+      "title": "When More Becomes Different",
+      "file": "chapter-03-when-more-becomes-different.md",
+      "lastEdited": "2025-12-20",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-10-25" },
+        "writing": { "done": true, "date": "2025-11-24" },
+        "automatedQA": { "done": true, "date": "2025-12-20", "usedLoop": true },
+        "automatedFixes": { "done": true, "date": "2025-12-20" },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": 90,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch4",
+      "number": 4,
+      "part": "Part 2 - The Mechanics",
+      "title": "Minimum Viable Wholes",
+      "file": "chapter-04-minimum-viable-wholes.md",
+      "lastEdited": "2025-12-20",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-10-28" },
+        "writing": { "done": true, "date": "2025-11-28" },
+        "automatedQA": { "done": true, "date": "2025-12-20", "usedLoop": true },
+        "automatedFixes": { "done": true, "date": "2025-12-20" },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": [
+            { "round": 1, "reviewDate": null, "fixesDate": null, "outcome": "approved_with_comments" }
+          ]
+        },
+        "completed": false
+      },
+      "qaScore": 92,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": "ST said some paragraphs didn't feel right but didn't share which ones."
+    },
+    {
+      "id": "ch5",
+      "number": 5,
+      "part": "Part 3 - The Fieldwork",
+      "title": "The Laboratory of Games",
+      "file": "chapter-05-the-laboratory-of-games.md",
+      "lastEdited": "2025-12-20",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-01" },
+        "writing": { "done": true, "date": "2025-12-02" },
+        "automatedQA": { "done": true, "date": "2025-12-20", "usedLoop": true },
+        "automatedFixes": { "done": true, "date": "2025-12-20" },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch6",
+      "number": 6,
+      "part": "Part 3 - The Fieldwork",
+      "title": "The Cultivated Machine",
+      "file": "chapter-06-the-cultivated-machine.md",
+      "lastEdited": "2025-12-20",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-05" },
+        "writing": { "done": true, "date": "2025-12-05" },
+        "automatedQA": { "done": true, "date": "2025-12-20", "usedLoop": false },
+        "automatedFixes": { "done": true, "date": "2025-12-17" },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch7",
+      "number": 7,
+      "part": "Part 3 - The Fieldwork",
+      "title": "The Digital Habitat",
+      "file": "chapter-07-the-digital-habitat.md",
+      "lastEdited": "2025-12-08",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-08" },
+        "writing": { "done": true, "date": "2025-12-08" },
+        "automatedQA": { "done": true, "date": "2025-12-08", "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch8",
+      "number": 8,
+      "part": "Part 3 - The Fieldwork",
+      "title": "The Human Hive",
+      "file": "chapter-08-the-human-hive.md",
+      "lastEdited": "2025-12-12",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-10" },
+        "writing": { "done": true, "date": "2025-12-10" },
+        "automatedQA": { "done": true, "date": "2025-12-12", "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch9",
+      "number": 9,
+      "part": "Part 4 - The Pattern Library",
+      "title": "Patterns of Boundaries",
+      "file": "chapter-09-patterns-of-boundaries.md",
+      "lastEdited": "2025-12-21",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-15" },
+        "writing": { "done": true, "date": "2025-12-15" },
+        "automatedQA": { "done": true, "date": "2025-12-21", "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch10",
+      "number": 10,
+      "part": "Part 4 - The Pattern Library",
+      "title": "Patterns of Feedback & Flow",
+      "file": "chapter-10-patterns-of-feedback-and-flow.md",
+      "lastEdited": "2025-12-21",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-18" },
+        "writing": { "done": true, "date": "2025-12-18" },
+        "automatedQA": { "done": true, "date": "2025-12-21", "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch11",
+      "number": 11,
+      "part": "Part 4 - The Pattern Library",
+      "title": "Patterns of Coherence",
+      "file": "chapter-11-patterns-of-coherence.md",
+      "lastEdited": "2025-12-21",
+      "workflow": {
+        "outline": { "done": true, "date": "2025-11-20" },
+        "writing": { "done": true, "date": "2025-12-20" },
+        "automatedQA": { "done": true, "date": "2025-12-21", "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch12",
+      "number": 12,
+      "part": "Part 5 - The Application",
+      "title": "Navigating the Cycles",
+      "file": null,
+      "lastEdited": null,
+      "workflow": {
+        "outline": { "done": false, "date": null },
+        "writing": { "done": false, "date": null },
+        "automatedQA": { "done": false, "date": null, "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "ch13",
+      "number": 13,
+      "part": "Part 5 - The Application",
+      "title": "The Art of Intervention",
+      "file": null,
+      "lastEdited": null,
+      "workflow": {
+        "outline": { "done": false, "date": null },
+        "writing": { "done": false, "date": null },
+        "automatedQA": { "done": false, "date": null, "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    },
+    {
+      "id": "epilogue",
+      "number": null,
+      "part": "Epilogue",
+      "title": "The Unfinished",
+      "file": null,
+      "lastEdited": null,
+      "workflow": {
+        "outline": { "done": false, "date": null },
+        "writing": { "done": false, "date": null },
+        "automatedQA": { "done": false, "date": null, "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase Change — Writing Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="book-title">Phase Change</h1>
+                <p class="book-subtitle">The Alchemy of Emergence</p>
+            </div>
+            <div class="header-meta">
+                <span class="last-updated">Updated: <span id="lastUpdated">—</span></span>
+            </div>
+        </header>
+
+        <!-- Overall Progress -->
+        <section class="progress-overview">
+            <div class="progress-ring-container">
+                <svg class="progress-ring" viewBox="0 0 120 120">
+                    <circle class="progress-ring-bg" cx="60" cy="60" r="52"/>
+                    <circle class="progress-ring-fill" cx="60" cy="60" r="52" id="progressRing"/>
+                </svg>
+                <div class="progress-ring-text">
+                    <span class="progress-percent" id="overallPercent">0%</span>
+                    <span class="progress-label">Complete</span>
+                </div>
+            </div>
+            <div class="progress-stats">
+                <div class="stat">
+                    <span class="stat-value" id="statDrafted">0</span>
+                    <span class="stat-label">Drafted</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="statQAd">0</span>
+                    <span class="stat-label">QA'd</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="statReviewed">0</span>
+                    <span class="stat-label">Reviewed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="statComplete">0</span>
+                    <span class="stat-label">Complete</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Editor Section -->
+        <section class="editor-section" id="editorSection">
+            <div class="section-header">
+                <h2>Ready for Review</h2>
+                <span class="editor-name" id="editorName">ST</span>
+            </div>
+            <div class="editor-cards" id="editorCards">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- All Chapters -->
+        <section class="chapters-section">
+            <h2>All Chapters</h2>
+            <div class="chapters-grid" id="chaptersGrid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
