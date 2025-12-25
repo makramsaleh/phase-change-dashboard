@@ -214,7 +214,7 @@ body {
 }
 
 .status-dot.done {
-    background: var(--accent-green);
+    background: #a1a1aa;
 }
 
 .status-dot.partial {
@@ -222,13 +222,14 @@ body {
 }
 
 .doc-link {
-    color: var(--accent-blue);
+    color: var(--accent-yellow);
     text-decoration: none;
     font-size: 0.75rem;
 }
 
 .doc-link:hover {
     text-decoration: underline;
+    color: #fbbf24;
 }
 
 .section-header-row {
@@ -276,7 +277,7 @@ body {
 }
 
 .ed-segment.filled {
-    background: var(--accent-purple);
+    background: #a1a1aa;
 }
 
 .ed-segment.current {
@@ -308,7 +309,7 @@ body {
 }
 
 .legend-dot.done {
-    background: var(--accent-green);
+    background: #a1a1aa;
 }
 
 .legend-dot.pending {
@@ -316,7 +317,7 @@ body {
 }
 
 .legend-dot.ed {
-    background: var(--accent-purple);
+    background: #a1a1aa;
 }
 
 .legend-dot.st {
@@ -361,7 +362,7 @@ body {
 
 .progress-ring-fill {
     fill: none;
-    stroke: var(--accent-green);
+    stroke: #a1a1aa;
     stroke-width: 8;
     stroke-linecap: round;
     stroke-dasharray: 327;
@@ -516,18 +517,20 @@ h2 {
 .editor-doc-link {
     display: inline-block;
     margin-top: 1rem;
-    padding: 0.625rem 1.25rem;
-    background: var(--accent-blue);
-    color: white;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--text-primary);
     text-decoration: none;
-    border-radius: 8px;
+    border: 1px solid var(--text-secondary);
+    border-radius: 6px;
     font-size: 0.875rem;
     font-weight: 500;
-    transition: background 0.2s;
+    transition: border-color 0.2s, color 0.2s;
 }
 
 .editor-doc-link:hover {
-    background: #2563eb;
+    border-color: var(--text-primary);
+    color: var(--text-primary);
 }
 
 .no-reviews {
@@ -732,13 +735,13 @@ h2 {
 }
 
 .tag-loop {
-    background: var(--accent-green-dim);
-    color: var(--accent-green);
+    background: rgba(161, 161, 170, 0.15);
+    color: #a1a1aa;
 }
 
 .tag-adversarial {
-    background: var(--accent-purple-dim);
-    color: var(--accent-purple);
+    background: rgba(161, 161, 170, 0.15);
+    color: #a1a1aa;
 }
 
 .tag-pending {
@@ -833,7 +836,7 @@ h2 {
 
 .donut-fill {
     fill: none;
-    stroke: var(--accent-green);
+    stroke: #a1a1aa;
     stroke-width: 4;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.5s ease-out;
@@ -872,7 +875,7 @@ h2 {
 }
 
 .detail-step.done .detail-step-dot {
-    background: var(--accent-green);
+    background: #a1a1aa;
 }
 
 .detail-step.current .detail-step-dot {
@@ -916,7 +919,7 @@ h2 {
 }
 
 .detail-qa-score.score-high {
-    color: var(--accent-green);
+    color: #a1a1aa;
 }
 
 .detail-qa-score.score-medium {
@@ -941,17 +944,19 @@ h2 {
 .detail-doc-link {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background: var(--accent-blue);
-    color: white;
+    background: transparent;
+    color: var(--text-primary);
     text-decoration: none;
+    border: 1px solid var(--text-secondary);
     border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 500;
-    transition: background 0.2s;
+    transition: border-color 0.2s, color 0.2s;
 }
 
 .detail-doc-link:hover {
-    background: #2563eb;
+    border-color: var(--text-primary);
+    color: var(--text-primary);
 }
 
 .detail-note {
