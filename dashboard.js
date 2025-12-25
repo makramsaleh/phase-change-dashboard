@@ -136,33 +136,41 @@ function renderEditorSection(chapters, editorName) {
         return;
     }
 
-    container.innerHTML = readyChapters.map(ch => {
-        const round = getEditorialRound(ch) + 1;
-        const chapterLabel = ch.number ? `Chapter ${ch.number}` : ch.part;
+    // Show only the first ready chapter (single action item)
+    const ch = readyChapters[0];
+    const round = getEditorialRound(ch) + 1;
+    const chapterLabel = ch.number ? `Chapter ${ch.number}` : ch.part;
 
-        let noteHtml = '';
-        if (ch.noteToEditor) {
-            noteHtml = `
-                <div class="editor-card-note">
-                    <div class="editor-card-note-label">Note from author</div>
-                    <div class="editor-card-note-text">"${ch.noteToEditor}"</div>
-                </div>
-            `;
-        }
-
-        return `
-            <div class="editor-card">
-                <div class="editor-card-header">
-                    <div>
-                        <div class="editor-card-title">${ch.title}</div>
-                        <div class="editor-card-chapter">${chapterLabel}</div>
-                    </div>
-                    <span class="editor-card-round">Round ${round}</span>
-                </div>
-                ${noteHtml}
+    let noteHtml = '';
+    if (ch.noteToEditor) {
+        noteHtml = `
+            <div class="editor-card-note">
+                <div class="editor-card-note-label">Note from author</div>
+                <div class="editor-card-note-text">"${ch.noteToEditor}"</div>
             </div>
         `;
-    }).join('');
+    }
+
+    let docLinkHtml = '';
+    if (ch.docLink) {
+        docLinkHtml = `
+            <a href="${ch.docLink}" target="_blank" class="editor-doc-link">Open in Google Docs</a>
+        `;
+    }
+
+    container.innerHTML = `
+        <div class="editor-card featured">
+            <div class="editor-card-header">
+                <div>
+                    <div class="editor-card-title">${ch.title}</div>
+                    <div class="editor-card-chapter">${chapterLabel}</div>
+                </div>
+                <span class="editor-card-round">Round ${round}</span>
+            </div>
+            ${noteHtml}
+            ${docLinkHtml}
+        </div>
+    `;
 }
 
 function renderChaptersGrid(chapters) {
@@ -252,12 +260,19 @@ function renderCondensedTable(chapters) {
 
     // Group by part for visual separation
     let currentPart = '';
+    let rows = [];
 
-    tbody.innerHTML = chapters.map(ch => {
-        const showPart = ch.part !== currentPart;
-        currentPart = ch.part;
+    chapters.forEach(ch => {
+        // Add section header row when part changes
+        if (ch.part !== currentPart) {
+            currentPart = ch.part;
+            rows.push(`
+                <tr class="section-header-row">
+                    <td colspan="9" class="section-header-cell">${ch.part}</td>
+                </tr>
+            `);
+        }
 
-        const partLabel = showPart ? `<span class="part-label">${ch.part.replace('Part ', 'P').replace(' - ', ': ')}</span>` : '';
         const chNum = ch.number || '—';
 
         // Status dots
@@ -266,10 +281,12 @@ function renderCondensedTable(chapters) {
         const fixDone = ch.workflow.automatedFixes && ch.workflow.automatedFixes.done;
         const manDone = ch.workflow.manualQA && ch.workflow.manualQA.done;
 
-        // Editorial progress
+        // Editorial progress - visual segments
         const editorial = ch.workflow.editorial || { targetRounds: 3, rounds: [] };
-        const edProgress = `${editorial.rounds.length}/${editorial.targetRounds}`;
-        const edClass = editorial.rounds.length > 0 ? (editorial.rounds.length >= editorial.targetRounds ? 'done' : 'partial') : '';
+        const edSegments = Array.from({ length: editorial.targetRounds }, (_, i) => {
+            const filled = i < editorial.rounds.length;
+            return `<span class="ed-segment ${filled ? 'filled' : ''}"></span>`;
+        }).join('');
 
         // Doc link
         const docLink = ch.docLink
@@ -278,9 +295,8 @@ function renderCondensedTable(chapters) {
 
         const lastEdited = ch.lastEdited ? formatDate(ch.lastEdited) : '—';
 
-        return `
+        rows.push(`
             <tr>
-                <td class="col-part">${partLabel}</td>
                 <td class="col-num">${chNum}</td>
                 <td class="chapter-title-cell">${ch.title}</td>
                 <td class="col-link">${docLink}</td>
@@ -288,11 +304,13 @@ function renderCondensedTable(chapters) {
                 <td class="col-status"><span class="status-dot ${qaDone ? 'done' : ''}"></span></td>
                 <td class="col-status"><span class="status-dot ${fixDone ? 'done' : ''}"></span></td>
                 <td class="col-status"><span class="status-dot ${manDone ? 'done' : ''}"></span></td>
-                <td class="col-status"><span class="ed-progress ${edClass}">${edProgress}</span></td>
+                <td class="col-status"><span class="ed-bar">${edSegments}</span></td>
                 <td class="col-date">${lastEdited}</td>
             </tr>
-        `;
-    }).join('');
+        `);
+    });
+
+    tbody.innerHTML = rows.join('');
 }
 
 function setupToggle() {

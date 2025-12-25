@@ -22,6 +22,17 @@
             </div>
         </header>
 
+        <!-- Editor Section (Priority - First Thing) -->
+        <section class="editor-section" id="editorSection">
+            <div class="section-header">
+                <h2>Next for Review</h2>
+                <span class="editor-name" id="editorName">ST</span>
+            </div>
+            <div class="editor-cards" id="editorCards">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
         <!-- Condensed Grid View -->
         <section class="condensed-section">
             <button class="condensed-toggle" id="condensedToggle">
@@ -32,7 +43,6 @@
                 <table class="condensed-table">
                     <thead>
                         <tr>
-                            <th class="col-part">Part</th>
                             <th class="col-num">#</th>
                             <th class="col-title">Chapter</th>
                             <th class="col-link">Doc</th>
@@ -48,6 +58,12 @@
                         <!-- Populated by JS -->
                     </tbody>
                 </table>
+                <div class="legend">
+                    <span class="legend-item"><span class="legend-dot done"></span> Done</span>
+                    <span class="legend-item"><span class="legend-dot pending"></span> Pending</span>
+                    <span class="legend-item"><span class="legend-dot ed"></span> Editorial round</span>
+                    <span class="legend-label">WRT = Writing, QA = Automated QA, FIX = Automated Fixes, MAN = Manual QA, ED = Editorial Reviews</span>
+                </div>
             </div>
         </section>
 
@@ -80,17 +96,6 @@
                     <span class="stat-value" id="statComplete">0</span>
                     <span class="stat-label">Complete</span>
                 </div>
-            </div>
-        </section>
-
-        <!-- Editor Section -->
-        <section class="editor-section" id="editorSection">
-            <div class="section-header">
-                <h2>Ready for Review</h2>
-                <span class="editor-name" id="editorName">ST</span>
-            </div>
-            <div class="editor-cards" id="editorCards">
-                <!-- Populated by JS -->
             </div>
         </section>
 
