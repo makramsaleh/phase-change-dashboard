@@ -1,7 +1,7 @@
 {
   "meta": {
     "bookTitle": "Phase Change: The Alchemy of Emergence",
-    "lastUpdated": "2025-12-25T22:00:00Z",
+    "lastUpdated": "2025-12-25T22:40:20Z",
     "editorName": "ST"
   },
   "chapters": [
@@ -29,7 +29,7 @@
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
       "noteToEditor": null,
-      "docLink": null
+      "docLink": "https://docs.google.com/document/d/1wcWdt9RLvxr3YHhwHmQDZwurSOTtxM8mXNtVzmNBlos/edit?usp=drive_link"
     },
     {
       "id": "ch1",
@@ -130,6 +130,30 @@
       "docLink": null
     },
     {
+      "id": "part3-intro",
+      "number": null,
+      "part": "Part 3 - The Fieldwork",
+      "title": "Introduction to Fieldwork",
+      "file": null,
+      "lastEdited": null,
+      "workflow": {
+        "outline": { "done": false, "date": null },
+        "writing": { "done": false, "date": null },
+        "automatedQA": { "done": false, "date": null, "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null,
+      "docLink": null
+    },
+    {
       "id": "ch5",
       "number": 5,
       "part": "Part 3 - The Fieldwork",
@@ -212,6 +236,30 @@
         "outline": { "done": true, "date": "2025-11-10" },
         "writing": { "done": true, "date": "2025-12-10" },
         "automatedQA": { "done": true, "date": "2025-12-12", "usedLoop": false },
+        "automatedFixes": { "done": false, "date": null },
+        "manualQA": { "done": false, "date": null },
+        "editorial": {
+          "targetRounds": 3,
+          "rounds": []
+        },
+        "completed": false
+      },
+      "qaScore": null,
+      "adversarial": { "hasRun": false, "lastRun": null },
+      "noteToEditor": null,
+      "docLink": null
+    },
+    {
+      "id": "part4-intro",
+      "number": null,
+      "part": "Part 4 - The Pattern Library",
+      "title": "Introduction to Patterns",
+      "file": null,
+      "lastEdited": null,
+      "workflow": {
+        "outline": { "done": false, "date": null },
+        "writing": { "done": false, "date": null },
+        "automatedQA": { "done": false, "date": null, "usedLoop": false },
         "automatedFixes": { "done": false, "date": null },
         "manualQA": { "done": false, "date": null },
         "editorial": {
