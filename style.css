@@ -172,9 +172,17 @@ body {
     border-bottom: none;
 }
 
-.col-num {
-    width: 40px;
+.col-expand {
+    width: 20px;
     text-align: center;
+    padding-left: 0.5rem !important;
+    padding-right: 0 !important;
+}
+
+.col-num {
+    width: 32px;
+    text-align: center;
+    padding-left: 0 !important;
 }
 
 .col-title {
@@ -250,8 +258,9 @@ body {
     background: var(--accent-yellow-dim);
 }
 
-.condensed-table tr.needs-st td:first-child {
+.condensed-table tr.needs-st td.col-expand {
     border-left: 3px solid var(--accent-yellow);
+    padding-left: calc(0.5rem - 3px) !important;
 }
 
 .ed-bar {
@@ -760,10 +769,9 @@ h2 {
 
 .expand-icon {
     display: inline-block;
-    width: 1rem;
-    font-size: 0.625rem;
+    font-size: 0.875rem;
     color: var(--text-muted);
-    transition: transform 0.15s;
+    line-height: 1;
 }
 
 .detail-row {

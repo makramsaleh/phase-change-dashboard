@@ -349,7 +349,7 @@ function renderCondensedTable(chapters) {
             currentPart = ch.part;
             rows.push(`
                 <tr class="section-header-row">
-                    <td colspan="9" class="section-header-cell">${ch.part}</td>
+                    <td colspan="10" class="section-header-cell">${ch.part}</td>
                 </tr>
             `);
         }
@@ -386,7 +386,8 @@ function renderCondensedTable(chapters) {
 
         rows.push(`
             <tr class="chapter-row ${rowClass}" data-chapter-id="${ch.id}">
-                <td class="col-num"><span class="expand-icon">▶</span>${chNum}</td>
+                <td class="col-expand"><span class="expand-icon">›</span></td>
+                <td class="col-num">${chNum}</td>
                 <td class="chapter-title-cell">${ch.title}</td>
                 <td class="col-link">${docLink}</td>
                 <td class="col-status"><span class="status-dot ${wrtDone ? 'done' : ''}"></span></td>
@@ -397,7 +398,7 @@ function renderCondensedTable(chapters) {
                 <td class="col-date">${lastEdited}</td>
             </tr>
             <tr class="detail-row" data-detail-for="${ch.id}">
-                <td colspan="9" class="detail-cell"></td>
+                <td colspan="10" class="detail-cell"></td>
             </tr>
         `);
     });
@@ -433,11 +434,11 @@ function setupRowExpansion(chapters) {
             if (isExpanded) {
                 row.classList.remove('expanded');
                 detailRow.classList.remove('expanded');
-                expandIcon.textContent = '▶';
+                expandIcon.textContent = '›';
             } else {
                 row.classList.add('expanded');
                 detailRow.classList.add('expanded');
-                expandIcon.textContent = '▼';
+                expandIcon.textContent = '⌄';
 
                 // Render details if not already rendered
                 const detailCell = detailRow.querySelector('.detail-cell');
