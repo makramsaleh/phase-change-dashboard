@@ -63,35 +63,11 @@
             </div>
         </section>
 
-        <!-- Overall Progress -->
-        <section class="progress-overview">
-            <div class="progress-ring-container">
-                <svg class="progress-ring" viewBox="0 0 120 120">
-                    <circle class="progress-ring-bg" cx="60" cy="60" r="52"/>
-                    <circle class="progress-ring-fill" cx="60" cy="60" r="52" id="progressRing"/>
-                </svg>
-                <div class="progress-ring-text">
-                    <span class="progress-percent" id="overallPercent">0%</span>
-                    <span class="progress-label">Complete</span>
-                </div>
-            </div>
-            <div class="progress-stats">
-                <div class="stat">
-                    <span class="stat-value" id="statDrafted">0</span>
-                    <span class="stat-label">Drafted</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="statQAd">0</span>
-                    <span class="stat-label">QA'd</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="statReviewed">0</span>
-                    <span class="stat-label">Reviewed</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" id="statComplete">0</span>
-                    <span class="stat-label">Complete</span>
-                </div>
+        <!-- Project Status -->
+        <section class="status-section">
+            <h2>Project Status</h2>
+            <div class="status-charts" id="statusCharts">
+                <!-- Populated by JS -->
             </div>
         </section>
 

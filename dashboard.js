@@ -91,7 +91,29 @@ function getQAScoreClass(score) {
     return 'score-low';
 }
 
-function renderOverallProgress(chapters) {
+function createStatusPie(value, total, label) {
+    const percent = total > 0 ? Math.round((value / total) * 100) : 0;
+    const circumference = 2 * Math.PI * 34; // r=34
+    const offset = circumference - (percent / 100) * circumference;
+
+    return `
+        <div class="status-chart">
+            <div class="status-pie-container">
+                <svg class="status-pie" viewBox="0 0 80 80">
+                    <circle class="status-pie-bg" cx="40" cy="40" r="34"/>
+                    <circle class="status-pie-fill" cx="40" cy="40" r="34"
+                        stroke-dasharray="${circumference}"
+                        stroke-dashoffset="${offset}"/>
+                </svg>
+                <span class="status-pie-text">${percent}%</span>
+            </div>
+            <div class="status-chart-label">${label}</div>
+            <div class="status-chart-count">${value} of ${total}</div>
+        </div>
+    `;
+}
+
+function renderProjectStatus(chapters) {
     const total = chapters.length;
     let drafted = 0;
     let qaed = 0;
@@ -105,24 +127,44 @@ function renderOverallProgress(chapters) {
         if (ch.workflow.completed) complete++;
     });
 
-    // Calculate overall progress (weighted)
-    // Writing: 25%, QA: 25%, Editorial: 25%, Complete: 25%
-    const progress = Math.round(
-        (complete / total) * 100
-    );
+    // Calculate overall progress based on furthest stage reached
+    // Weight: Not started=0, Drafted=25, QA'd=50, Reviewed=75, Complete=100
+    let overallProgress = 0;
+    chapters.forEach(ch => {
+        if (ch.workflow.completed) {
+            overallProgress += 100;
+        } else if (ch.workflow.editorial && ch.workflow.editorial.rounds.length > 0) {
+            overallProgress += 75;
+        } else if (ch.workflow.automatedQA && ch.workflow.automatedQA.done) {
+            overallProgress += 50;
+        } else if (ch.workflow.writing && ch.workflow.writing.done) {
+            overallProgress += 25;
+        }
+    });
+    const overallPercent = total > 0 ? Math.round(overallProgress / total) : 0;
+    const circumference = 2 * Math.PI * 34;
+    const overallOffset = circumference - (overallPercent / 100) * circumference;
 
-    // Update DOM
-    document.getElementById('overallPercent').textContent = `${progress}%`;
-    document.getElementById('statDrafted').textContent = `${drafted}/${total}`;
-    document.getElementById('statQAd').textContent = `${qaed}/${total}`;
-    document.getElementById('statReviewed').textContent = `${reviewed}/${total}`;
-    document.getElementById('statComplete').textContent = `${complete}/${total}`;
-
-    // Animate progress ring
-    const ring = document.getElementById('progressRing');
-    const circumference = 2 * Math.PI * 52; // r=52
-    const offset = circumference - (progress / 100) * circumference;
-    ring.style.strokeDashoffset = offset;
+    const container = document.getElementById('statusCharts');
+    container.innerHTML = `
+        <div class="status-chart overall">
+            <div class="status-pie-container">
+                <svg class="status-pie" viewBox="0 0 80 80">
+                    <circle class="status-pie-bg" cx="40" cy="40" r="34"/>
+                    <circle class="status-pie-fill" cx="40" cy="40" r="34"
+                        stroke-dasharray="${circumference}"
+                        stroke-dashoffset="${overallOffset}"/>
+                </svg>
+                <span class="status-pie-text">${overallPercent}%</span>
+            </div>
+            <div class="status-chart-label">Overall</div>
+            <div class="status-chart-count">Progress</div>
+        </div>
+        ${createStatusPie(drafted, total, 'Drafted')}
+        ${createStatusPie(qaed, total, "QA'd")}
+        ${createStatusPie(reviewed, total, 'Reviewed')}
+        ${createStatusPie(complete, total, 'Complete')}
+    `;
 }
 
 function renderEditorSection(chapters, editorName) {
@@ -328,7 +370,7 @@ async function init() {
 
     // Render sections
     renderCondensedTable(data.chapters);
-    renderOverallProgress(data.chapters);
+    renderProjectStatus(data.chapters);
     renderEditorSection(data.chapters, data.meta.editorName);
 
     // Setup interactions
