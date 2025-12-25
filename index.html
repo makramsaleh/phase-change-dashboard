@@ -22,6 +22,35 @@
             </div>
         </header>
 
+        <!-- Condensed Grid View -->
+        <section class="condensed-section">
+            <button class="condensed-toggle" id="condensedToggle">
+                <span class="toggle-icon">▼</span>
+                <span>Quick View</span>
+            </button>
+            <div class="condensed-content" id="condensedContent">
+                <table class="condensed-table">
+                    <thead>
+                        <tr>
+                            <th class="col-part">Part</th>
+                            <th class="col-num">#</th>
+                            <th class="col-title">Chapter</th>
+                            <th class="col-link">Doc</th>
+                            <th class="col-status">WRT</th>
+                            <th class="col-status">QA</th>
+                            <th class="col-status">FIX</th>
+                            <th class="col-status">MAN</th>
+                            <th class="col-status">ED</th>
+                            <th class="col-date">Edited</th>
+                        </tr>
+                    </thead>
+                    <tbody id="condensedTableBody">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <!-- Overall Progress -->
         <section class="progress-overview">
             <div class="progress-ring-container">

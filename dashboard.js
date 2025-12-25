@@ -2,7 +2,6 @@
 // Loads data from data.json and renders the status
 
 const WORKFLOW_STEPS = [
-    { key: 'outline', label: 'OUT' },
     { key: 'writing', label: 'WRT' },
     { key: 'automatedQA', label: 'QA' },
     { key: 'automatedFixes', label: 'FIX' },
@@ -239,9 +238,71 @@ async function init() {
     document.getElementById('lastUpdated').textContent = formatDateTime(data.meta.lastUpdated);
 
     // Render sections
+    renderCondensedTable(data.chapters);
     renderOverallProgress(data.chapters);
     renderEditorSection(data.chapters, data.meta.editorName);
     renderChaptersGrid(data.chapters);
+
+    // Setup interactions
+    setupToggle();
+}
+
+function renderCondensedTable(chapters) {
+    const tbody = document.getElementById('condensedTableBody');
+
+    // Group by part for visual separation
+    let currentPart = '';
+
+    tbody.innerHTML = chapters.map(ch => {
+        const showPart = ch.part !== currentPart;
+        currentPart = ch.part;
+
+        const partLabel = showPart ? `<span class="part-label">${ch.part.replace('Part ', 'P').replace(' - ', ': ')}</span>` : '';
+        const chNum = ch.number || '—';
+
+        // Status dots
+        const wrtDone = ch.workflow.writing && ch.workflow.writing.done;
+        const qaDone = ch.workflow.automatedQA && ch.workflow.automatedQA.done;
+        const fixDone = ch.workflow.automatedFixes && ch.workflow.automatedFixes.done;
+        const manDone = ch.workflow.manualQA && ch.workflow.manualQA.done;
+
+        // Editorial progress
+        const editorial = ch.workflow.editorial || { targetRounds: 3, rounds: [] };
+        const edProgress = `${editorial.rounds.length}/${editorial.targetRounds}`;
+        const edClass = editorial.rounds.length > 0 ? (editorial.rounds.length >= editorial.targetRounds ? 'done' : 'partial') : '';
+
+        // Doc link
+        const docLink = ch.docLink
+            ? `<a href="${ch.docLink}" target="_blank" class="doc-link">Open</a>`
+            : '<span style="color: var(--text-muted)">—</span>';
+
+        const lastEdited = ch.lastEdited ? formatDate(ch.lastEdited) : '—';
+
+        return `
+            <tr>
+                <td class="col-part">${partLabel}</td>
+                <td class="col-num">${chNum}</td>
+                <td class="chapter-title-cell">${ch.title}</td>
+                <td class="col-link">${docLink}</td>
+                <td class="col-status"><span class="status-dot ${wrtDone ? 'done' : ''}"></span></td>
+                <td class="col-status"><span class="status-dot ${qaDone ? 'done' : ''}"></span></td>
+                <td class="col-status"><span class="status-dot ${fixDone ? 'done' : ''}"></span></td>
+                <td class="col-status"><span class="status-dot ${manDone ? 'done' : ''}"></span></td>
+                <td class="col-status"><span class="ed-progress ${edClass}">${edProgress}</span></td>
+                <td class="col-date">${lastEdited}</td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function setupToggle() {
+    const toggle = document.getElementById('condensedToggle');
+    const content = document.getElementById('condensedContent');
+
+    toggle.addEventListener('click', () => {
+        toggle.classList.toggle('collapsed');
+        content.classList.toggle('collapsed');
+    });
 }
 
 // Initialize on load

@@ -28,7 +28,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch1",
@@ -51,7 +52,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": true, "lastRun": "2025-12-25" },
-      "noteToEditor": "Ready for first pass. Focus on the watchmaker analogy in sections 2-3."
+      "noteToEditor": "Ready for first pass. Focus on the watchmaker analogy in sections 2-3.",
+      "docLink": null
     },
     {
       "id": "ch2",
@@ -74,7 +76,8 @@
       },
       "qaScore": 92,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": "Ready for first pass."
+      "noteToEditor": "Ready for first pass.",
+      "docLink": null
     },
     {
       "id": "ch3",
@@ -97,7 +100,8 @@
       },
       "qaScore": 90,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch4",
@@ -122,7 +126,8 @@
       },
       "qaScore": 92,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": "ST said some paragraphs didn't feel right but didn't share which ones."
+      "noteToEditor": "ST said some paragraphs didn't feel right but didn't share which ones.",
+      "docLink": null
     },
     {
       "id": "ch5",
@@ -145,7 +150,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch6",
@@ -168,7 +174,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch7",
@@ -191,7 +198,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch8",
@@ -214,7 +222,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch9",
@@ -237,7 +246,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch10",
@@ -260,7 +270,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch11",
@@ -283,7 +294,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch12",
@@ -306,7 +318,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "ch13",
@@ -329,7 +342,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     },
     {
       "id": "epilogue",
@@ -352,7 +366,8 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null
+      "noteToEditor": null,
+      "docLink": null
     }
   ]
 }

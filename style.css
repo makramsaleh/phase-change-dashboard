@@ -88,6 +88,160 @@ body {
     color: var(--text-muted);
 }
 
+/* Condensed Grid View */
+.condensed-section {
+    margin-bottom: 2rem;
+}
+
+.condensed-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s;
+}
+
+.condensed-toggle:hover {
+    background: var(--bg-card);
+}
+
+.toggle-icon {
+    transition: transform 0.2s;
+    font-size: 0.75rem;
+}
+
+.condensed-toggle.collapsed .toggle-icon {
+    transform: rotate(-90deg);
+}
+
+.condensed-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    overflow: hidden;
+    max-height: 600px;
+    transition: max-height 0.3s ease-out;
+}
+
+.condensed-content.collapsed {
+    max-height: 0;
+    border: none;
+}
+
+.condensed-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+}
+
+.condensed-table th {
+    background: var(--bg-card);
+    padding: 0.625rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+}
+
+.condensed-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+}
+
+.condensed-table tr:hover td {
+    background: var(--bg-card);
+}
+
+.condensed-table tr:last-child td {
+    border-bottom: none;
+}
+
+.col-part {
+    width: 120px;
+    color: var(--text-muted);
+}
+
+.col-num {
+    width: 40px;
+    text-align: center;
+}
+
+.col-title {
+    min-width: 180px;
+}
+
+.col-link {
+    width: 50px;
+    text-align: center;
+}
+
+.col-status {
+    width: 44px;
+    text-align: center;
+}
+
+.col-date {
+    width: 70px;
+    text-align: right;
+    color: var(--text-muted);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--bg-card);
+}
+
+.status-dot.done {
+    background: var(--accent-green);
+}
+
+.status-dot.partial {
+    background: var(--accent-yellow);
+}
+
+.doc-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.75rem;
+}
+
+.doc-link:hover {
+    text-decoration: underline;
+}
+
+.part-label {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+}
+
+.chapter-title-cell {
+    font-weight: 500;
+}
+
+.ed-progress {
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+}
+
 /* Progress Overview */
 .progress-overview {
     display: flex;
