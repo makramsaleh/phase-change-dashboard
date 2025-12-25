@@ -88,54 +88,13 @@ body {
     color: var(--text-muted);
 }
 
-/* Condensed Grid View */
-.condensed-section {
+/* Chapter Grid */
+.grid-section {
     margin-bottom: 2rem;
-}
-
-.condensed-toggle {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 0.75rem 1rem;
-    color: var(--text-primary);
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    width: 100%;
-    text-align: left;
-    transition: background 0.2s;
-}
-
-.condensed-toggle:hover {
-    background: var(--bg-card);
-}
-
-.toggle-icon {
-    transition: transform 0.2s;
-    font-size: 0.75rem;
-}
-
-.condensed-toggle.collapsed .toggle-icon {
-    transform: rotate(-90deg);
-}
-
-.condensed-content {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-top: none;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
     overflow: hidden;
-    max-height: 1500px;
-    transition: max-height 0.3s ease-out;
-}
-
-.condensed-content.collapsed {
-    max-height: 0;
-    border: none;
 }
 
 .condensed-table {

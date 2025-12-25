@@ -332,7 +332,6 @@ async function init() {
     renderEditorSection(data.chapters, data.meta.editorName);
 
     // Setup interactions
-    setupToggle();
     setupRowExpansion(data.chapters);
 }
 
@@ -404,16 +403,6 @@ function renderCondensedTable(chapters) {
     });
 
     tbody.innerHTML = rows.join('');
-}
-
-function setupToggle() {
-    const toggle = document.getElementById('condensedToggle');
-    const content = document.getElementById('condensedContent');
-
-    toggle.addEventListener('click', () => {
-        toggle.classList.toggle('collapsed');
-        content.classList.toggle('collapsed');
-    });
 }
 
 function setupRowExpansion(chapters) {
