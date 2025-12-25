@@ -300,8 +300,11 @@ function renderCondensedTable(chapters) {
 
         const lastEdited = ch.lastEdited ? formatDate(ch.lastEdited) : '—';
 
+        // Add class if this row needs ST's attention
+        const rowClass = isReady ? 'needs-st' : '';
+
         rows.push(`
-            <tr>
+            <tr class="${rowClass}">
                 <td class="col-num">${chNum}</td>
                 <td class="chapter-title-cell">${ch.title}</td>
                 <td class="col-link">${docLink}</td>

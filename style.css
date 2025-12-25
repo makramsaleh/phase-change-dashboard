@@ -245,6 +245,15 @@ body {
     font-weight: 500;
 }
 
+/* Row needing ST's attention */
+.condensed-table tr.needs-st td {
+    background: var(--accent-yellow-dim);
+}
+
+.condensed-table tr.needs-st td:first-child {
+    border-left: 3px solid var(--accent-yellow);
+}
+
 .ed-bar {
     display: inline-flex;
     gap: 2px;
