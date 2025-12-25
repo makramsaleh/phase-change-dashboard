@@ -743,6 +743,232 @@ h2 {
     margin-left: auto;
 }
 
+/* Expandable Rows */
+.chapter-row {
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.chapter-row:hover td {
+    background: var(--bg-card-hover);
+}
+
+.chapter-row.expanded td {
+    background: var(--bg-card);
+    border-bottom-color: transparent;
+}
+
+.expand-icon {
+    display: inline-block;
+    width: 1rem;
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    transition: transform 0.15s;
+}
+
+.detail-row {
+    display: none;
+}
+
+.detail-row.expanded {
+    display: table-row;
+}
+
+.detail-cell {
+    padding: 0 !important;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Chapter Details Panel */
+.chapter-details {
+    padding: 1.5rem;
+}
+
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 2rem;
+}
+
+.detail-section {
+    min-width: 0;
+}
+
+.detail-section-header {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.detail-chart-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.detail-donut {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    transform: rotate(-90deg);
+}
+
+.donut-bg {
+    fill: none;
+    stroke: var(--border-color);
+    stroke-width: 4;
+}
+
+.donut-fill {
+    fill: none;
+    stroke: var(--accent-green);
+    stroke-width: 4;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease-out;
+}
+
+.donut-text {
+    fill: var(--text-primary);
+    font-size: 10px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    transform: rotate(90deg);
+    transform-origin: center;
+}
+
+.detail-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    flex: 1;
+}
+
+.detail-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.detail-step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3f3f46;
+    flex-shrink: 0;
+}
+
+.detail-step.done .detail-step-dot {
+    background: var(--accent-green);
+}
+
+.detail-step.current .detail-step-dot {
+    background: var(--accent-yellow);
+}
+
+.detail-step-label {
+    color: var(--text-secondary);
+    flex: 1;
+}
+
+.detail-step.done .detail-step-label {
+    color: var(--text-primary);
+}
+
+.detail-step.current .detail-step-label {
+    color: var(--accent-yellow);
+}
+
+.detail-step-date {
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+}
+
+.detail-step.current .detail-step-date {
+    color: var(--accent-yellow);
+    font-weight: 500;
+}
+
+.detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.detail-qa-score {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.detail-qa-score.score-high {
+    color: var(--accent-green);
+}
+
+.detail-qa-score.score-medium {
+    color: var(--accent-yellow);
+}
+
+.detail-qa-score.score-low {
+    color: var(--accent-red);
+}
+
+.detail-qa-score.score-none {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.detail-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.detail-doc-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--accent-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.detail-doc-link:hover {
+    background: #2563eb;
+}
+
+.detail-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-yellow);
+}
+
+.detail-note-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.detail-note-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .dashboard {
@@ -777,7 +1003,14 @@ h2 {
         font-size: 2rem;
     }
 
-    .chapters-grid {
+    .detail-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .detail-meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 }

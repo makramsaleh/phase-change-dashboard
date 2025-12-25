@@ -173,66 +173,147 @@ function renderEditorSection(chapters, editorName) {
     `;
 }
 
-function renderChaptersGrid(chapters) {
-    const container = document.getElementById('chaptersGrid');
+function createDonutChart(completed, total) {
+    const percentage = total > 0 ? (completed / total) * 100 : 0;
+    const circumference = 2 * Math.PI * 20; // r=20
+    const offset = circumference - (percentage / 100) * circumference;
 
-    container.innerHTML = chapters.map(ch => {
-        const status = getChapterStatus(ch);
-        const chapterLabel = ch.number ? `<span class="chapter-card-number">${ch.number}.</span>` : '';
-        const qaScore = ch.qaScore;
-        const scoreClass = getQAScoreClass(qaScore);
-        const scoreText = qaScore !== null ? qaScore : 'N/A';
+    return `
+        <svg class="detail-donut" viewBox="0 0 50 50">
+            <circle class="donut-bg" cx="25" cy="25" r="20"/>
+            <circle class="donut-fill" cx="25" cy="25" r="20"
+                stroke-dasharray="${circumference}"
+                stroke-dashoffset="${offset}"/>
+            <text x="25" y="25" class="donut-text">${completed}/${total}</text>
+        </svg>
+    `;
+}
 
-        // Workflow steps
-        const workflowHtml = WORKFLOW_STEPS.map(step => {
-            const stepData = ch.workflow[step.key];
-            const isDone = stepData && stepData.done;
-            const isCurrent = !isDone && step.key === getWorkflowStatus(ch.workflow).current;
-            const className = isDone ? 'done' : (isCurrent ? 'current' : '');
-            return `<div class="workflow-step ${className}" data-label="${step.label}"></div>`;
-        }).join('');
+function renderChapterDetails(ch) {
+    const workflow = ch.workflow;
 
-        // Editorial dots
-        const editorial = ch.workflow.editorial || { targetRounds: 3, rounds: [] };
-        const editorialHtml = Array.from({ length: editorial.targetRounds }, (_, i) => {
-            const isDone = i < editorial.rounds.length;
-            const isCurrent = i === editorial.rounds.length && ch.workflow.manualQA && ch.workflow.manualQA.done;
-            const className = isDone ? 'done' : (isCurrent ? 'current' : '');
-            return `<div class="editorial-dot ${className}"></div>`;
-        }).join('');
+    // Count completed workflow steps
+    let completedSteps = 0;
+    const totalSteps = WORKFLOW_STEPS.length;
+    WORKFLOW_STEPS.forEach(step => {
+        if (workflow[step.key] && workflow[step.key].done) completedSteps++;
+    });
 
-        // Tags
-        let tagsHtml = '';
-        if (ch.workflow.automatedQA && ch.workflow.automatedQA.usedLoop) {
-            tagsHtml += '<span class="tag tag-loop">Loop</span>';
-        }
-        if (ch.adversarial && ch.adversarial.hasRun) {
-            tagsHtml += '<span class="tag tag-adversarial">Adversarial</span>';
-        }
+    // QA Score
+    const qaScore = ch.qaScore;
+    const scoreClass = getQAScoreClass(qaScore);
+    const scoreText = qaScore !== null ? qaScore : '—';
 
-        const lastEdited = ch.lastEdited ? `<span class="last-edited">${formatDate(ch.lastEdited)}</span>` : '';
+    // Editorial status
+    const editorial = workflow.editorial || { targetRounds: 3, rounds: [] };
+    const editorialRounds = editorial.rounds.length;
+    const targetRounds = editorial.targetRounds;
 
+    // Workflow steps with labels
+    const workflowDetails = WORKFLOW_STEPS.map(step => {
+        const stepData = workflow[step.key];
+        const isDone = stepData && stepData.done;
+        const date = stepData && stepData.date ? formatDate(stepData.date) : '—';
+        const labels = {
+            'writing': 'Writing',
+            'automatedQA': 'Automated QA',
+            'automatedFixes': 'Automated Fixes',
+            'manualQA': 'Manual QA'
+        };
         return `
-            <div class="chapter-card status-${status}">
-                <div class="chapter-card-header">
-                    <div class="chapter-card-info">
-                        <div class="chapter-card-part">${ch.part}</div>
-                        <div class="chapter-card-title">${chapterLabel}${ch.title}</div>
-                    </div>
-                    <div class="qa-score ${scoreClass}">${scoreText}</div>
-                </div>
-                <div class="workflow-progress">${workflowHtml}</div>
-                <div class="editorial-progress">
-                    <span class="editorial-label">Editorial</span>
-                    <div class="editorial-dots">${editorialHtml}</div>
-                </div>
-                <div class="chapter-card-meta">
-                    ${tagsHtml}
-                    ${lastEdited}
-                </div>
+            <div class="detail-step ${isDone ? 'done' : ''}">
+                <span class="detail-step-dot"></span>
+                <span class="detail-step-label">${labels[step.key]}</span>
+                <span class="detail-step-date">${isDone ? date : 'Pending'}</span>
             </div>
         `;
     }).join('');
+
+    // Editorial rounds
+    const editorialDetails = Array.from({ length: targetRounds }, (_, i) => {
+        const round = editorial.rounds[i];
+        const isDone = i < editorialRounds;
+        const isReady = workflow.manualQA && workflow.manualQA.done && !workflow.completed;
+        const isCurrent = isReady && i === editorialRounds;
+        let status = 'Pending';
+        let date = '—';
+        if (isDone && round) {
+            status = round.outcome === 'approved' ? 'Approved' : 'Reviewed';
+            date = round.reviewDate ? formatDate(round.reviewDate) : '—';
+        } else if (isCurrent) {
+            status = 'Awaiting ST';
+        }
+        const className = isDone ? 'done' : (isCurrent ? 'current' : '');
+        return `
+            <div class="detail-step ${className}">
+                <span class="detail-step-dot"></span>
+                <span class="detail-step-label">Round ${i + 1}</span>
+                <span class="detail-step-date">${status}${isDone ? ` (${date})` : ''}</span>
+            </div>
+        `;
+    }).join('');
+
+    // Tags
+    let tagsHtml = '';
+    if (workflow.automatedQA && workflow.automatedQA.usedLoop) {
+        tagsHtml += '<span class="tag tag-loop">QA Loop</span>';
+    }
+    if (ch.adversarial && ch.adversarial.hasRun) {
+        tagsHtml += '<span class="tag tag-adversarial">Adversarial</span>';
+    }
+
+    // Note from author
+    let noteHtml = '';
+    if (ch.noteToEditor) {
+        noteHtml = `
+            <div class="detail-note">
+                <div class="detail-note-label">Note to Editor</div>
+                <div class="detail-note-text">"${ch.noteToEditor}"</div>
+            </div>
+        `;
+    }
+
+    // Doc link
+    let docLinkHtml = '';
+    if (ch.docLink) {
+        docLinkHtml = `<a href="${ch.docLink}" target="_blank" class="detail-doc-link">Open in Google Docs</a>`;
+    }
+
+    return `
+        <div class="chapter-details">
+            <div class="detail-grid">
+                <div class="detail-section">
+                    <div class="detail-section-header">Workflow Progress</div>
+                    <div class="detail-chart-row">
+                        ${createDonutChart(completedSteps, totalSteps)}
+                        <div class="detail-steps">
+                            ${workflowDetails}
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section">
+                    <div class="detail-section-header">Editorial Review</div>
+                    <div class="detail-chart-row">
+                        ${createDonutChart(editorialRounds, targetRounds)}
+                        <div class="detail-steps">
+                            ${editorialDetails}
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-section detail-meta">
+                    <div class="detail-qa">
+                        <div class="detail-section-header">QA Score</div>
+                        <div class="detail-qa-score ${scoreClass}">${scoreText}</div>
+                    </div>
+                    <div class="detail-tags">
+                        ${tagsHtml}
+                    </div>
+                    ${docLinkHtml}
+                </div>
+            </div>
+            ${noteHtml}
+        </div>
+    `;
 }
 
 async function init() {
@@ -249,10 +330,10 @@ async function init() {
     renderCondensedTable(data.chapters);
     renderOverallProgress(data.chapters);
     renderEditorSection(data.chapters, data.meta.editorName);
-    renderChaptersGrid(data.chapters);
 
     // Setup interactions
     setupToggle();
+    setupRowExpansion(data.chapters);
 }
 
 function renderCondensedTable(chapters) {
@@ -304,8 +385,8 @@ function renderCondensedTable(chapters) {
         const rowClass = isReady ? 'needs-st' : '';
 
         rows.push(`
-            <tr class="${rowClass}">
-                <td class="col-num">${chNum}</td>
+            <tr class="chapter-row ${rowClass}" data-chapter-id="${ch.id}">
+                <td class="col-num"><span class="expand-icon">▶</span>${chNum}</td>
                 <td class="chapter-title-cell">${ch.title}</td>
                 <td class="col-link">${docLink}</td>
                 <td class="col-status"><span class="status-dot ${wrtDone ? 'done' : ''}"></span></td>
@@ -314,6 +395,9 @@ function renderCondensedTable(chapters) {
                 <td class="col-status"><span class="status-dot ${manDone ? 'done' : ''}"></span></td>
                 <td class="col-status"><span class="ed-bar">${edSegments}</span></td>
                 <td class="col-date">${lastEdited}</td>
+            </tr>
+            <tr class="detail-row" data-detail-for="${ch.id}">
+                <td colspan="9" class="detail-cell"></td>
             </tr>
         `);
     });
@@ -328,6 +412,43 @@ function setupToggle() {
     toggle.addEventListener('click', () => {
         toggle.classList.toggle('collapsed');
         content.classList.toggle('collapsed');
+    });
+}
+
+function setupRowExpansion(chapters) {
+    const chapterRows = document.querySelectorAll('.chapter-row');
+
+    chapterRows.forEach(row => {
+        row.addEventListener('click', (e) => {
+            // Don't expand if clicking on a link
+            if (e.target.tagName === 'A') return;
+
+            const chapterId = row.dataset.chapterId;
+            const detailRow = document.querySelector(`tr[data-detail-for="${chapterId}"]`);
+            const expandIcon = row.querySelector('.expand-icon');
+
+            // Toggle expanded state
+            const isExpanded = row.classList.contains('expanded');
+
+            if (isExpanded) {
+                row.classList.remove('expanded');
+                detailRow.classList.remove('expanded');
+                expandIcon.textContent = '▶';
+            } else {
+                row.classList.add('expanded');
+                detailRow.classList.add('expanded');
+                expandIcon.textContent = '▼';
+
+                // Render details if not already rendered
+                const detailCell = detailRow.querySelector('.detail-cell');
+                if (!detailCell.hasChildNodes()) {
+                    const chapter = chapters.find(ch => ch.id === chapterId);
+                    if (chapter) {
+                        detailCell.innerHTML = renderChapterDetails(chapter);
+                    }
+                }
+            }
+        });
     });
 }
 
