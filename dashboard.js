@@ -117,14 +117,21 @@ function renderProjectStatus(chapters) {
     const total = chapters.length;
     let drafted = 0;
     let qaed = 0;
-    let reviewed = 0;
     let complete = 0;
+
+    // For reviews: count total rounds completed vs total rounds needed
+    let totalRoundsNeeded = 0;
+    let totalRoundsCompleted = 0;
 
     chapters.forEach(ch => {
         if (ch.workflow.writing && ch.workflow.writing.done) drafted++;
         if (ch.workflow.automatedQA && ch.workflow.automatedQA.done) qaed++;
-        if (ch.workflow.editorial && ch.workflow.editorial.rounds.length > 0) reviewed++;
         if (ch.workflow.completed) complete++;
+
+        // Count editorial rounds
+        const editorial = ch.workflow.editorial || { targetRounds: 3, rounds: [] };
+        totalRoundsNeeded += editorial.targetRounds;
+        totalRoundsCompleted += editorial.rounds.length;
     });
 
     // Calculate overall progress based on furthest stage reached
@@ -162,7 +169,7 @@ function renderProjectStatus(chapters) {
         </div>
         ${createStatusPie(drafted, total, 'Drafted')}
         ${createStatusPie(qaed, total, "QA'd")}
-        ${createStatusPie(reviewed, total, 'Reviewed')}
+        ${createStatusPie(totalRoundsCompleted, totalRoundsNeeded, 'Reviewed')}
         ${createStatusPie(complete, total, 'Complete')}
     `;
 }
