@@ -282,10 +282,15 @@ function renderCondensedTable(chapters) {
         const manDone = ch.workflow.manualQA && ch.workflow.manualQA.done;
 
         // Editorial progress - visual segments
+        // Yellow = needs ST's attention (current round awaiting review)
         const editorial = ch.workflow.editorial || { targetRounds: 3, rounds: [] };
+        const isReady = manDone && !ch.workflow.completed;
+        const currentRound = editorial.rounds.length; // 0-indexed next round
         const edSegments = Array.from({ length: editorial.targetRounds }, (_, i) => {
             const filled = i < editorial.rounds.length;
-            return `<span class="ed-segment ${filled ? 'filled' : ''}"></span>`;
+            const isCurrent = isReady && i === currentRound;
+            const className = filled ? 'filled' : (isCurrent ? 'current' : '');
+            return `<span class="ed-segment ${className}"></span>`;
         }).join('');
 
         // Doc link

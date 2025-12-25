@@ -261,6 +261,10 @@ body {
     background: var(--accent-purple);
 }
 
+.ed-segment.current {
+    background: var(--accent-yellow);
+}
+
 /* Legend */
 .legend {
     display: flex;
@@ -295,6 +299,10 @@ body {
 
 .legend-dot.ed {
     background: var(--accent-purple);
+}
+
+.legend-dot.st {
+    background: var(--accent-yellow);
 }
 
 .legend-label {
