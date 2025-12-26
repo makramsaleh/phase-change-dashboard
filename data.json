@@ -1,7 +1,7 @@
 {
   "meta": {
     "bookTitle": "Phase Change: The Alchemy of Emergence",
-    "lastUpdated": "2025-12-25T22:58:03Z",
+    "lastUpdated": "2025-12-26T16:52:20Z",
     "editorName": "ST"
   },
   "chapters": [
@@ -134,14 +134,14 @@
       "number": null,
       "part": "Part 3 - The Fieldwork",
       "title": "Introduction to Fieldwork",
-      "file": null,
-      "lastEdited": null,
+      "file": "part-3-introduction-the-common-dna.md",
+      "lastEdited": "2025-12-26",
       "workflow": {
-        "outline": { "done": false, "date": null },
-        "writing": { "done": false, "date": null },
-        "automatedQA": { "done": false, "date": null, "usedLoop": false },
-        "automatedFixes": { "done": false, "date": null },
-        "manualQA": { "done": false, "date": null },
+        "outline": { "done": true, "date": "2025-12-26" },
+        "writing": { "done": true, "date": "2025-12-26" },
+        "automatedQA": { "done": true, "date": "2025-12-26", "usedLoop": false },
+        "automatedFixes": { "done": true, "date": "2025-12-26" },
+        "manualQA": { "done": true, "date": "2025-12-26" },
         "editorial": {
           "targetRounds": 3,
           "rounds": []
@@ -150,7 +150,7 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null,
+      "noteToEditor": "Author satisfaction: 65%",
       "docLink": null
     },
     {
@@ -254,14 +254,14 @@
       "number": null,
       "part": "Part 4 - The Pattern Library",
       "title": "Introduction to Patterns",
-      "file": null,
-      "lastEdited": null,
+      "file": "part-4-introduction-conditions-not-recipes.md",
+      "lastEdited": "2025-12-26",
       "workflow": {
-        "outline": { "done": false, "date": null },
-        "writing": { "done": false, "date": null },
-        "automatedQA": { "done": false, "date": null, "usedLoop": false },
-        "automatedFixes": { "done": false, "date": null },
-        "manualQA": { "done": false, "date": null },
+        "outline": { "done": true, "date": "2025-12-26" },
+        "writing": { "done": true, "date": "2025-12-26" },
+        "automatedQA": { "done": true, "date": "2025-12-26", "usedLoop": false },
+        "automatedFixes": { "done": true, "date": "2025-12-26" },
+        "manualQA": { "done": true, "date": "2025-12-26" },
         "editorial": {
           "targetRounds": 3,
           "rounds": []
@@ -270,7 +270,7 @@
       },
       "qaScore": null,
       "adversarial": { "hasRun": false, "lastRun": null },
-      "noteToEditor": null,
+      "noteToEditor": "Author satisfaction: 65%",
       "docLink": null
     },
     {
